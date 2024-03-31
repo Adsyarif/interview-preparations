@@ -48,6 +48,7 @@ class LinkedList {
     const array = [];
     let currentNode = this.head;
     while (currentNode !== null) {
+      // console.log(currentNode);
       array.push(currentNode.value);
       currentNode = currentNode.next;
     }
@@ -88,7 +89,11 @@ class LinkedList {
   }
 
   remove(index) {
-    const leader = this.traverseToIndex;
+    const leader = this.traverseToIndex(index - 1);
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    this.length--;
+    return this.printList();
   }
 }
 
@@ -97,8 +102,10 @@ const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 // console.log(myLinkedList);
 myLinkedList.append(16);
+myLinkedList.remove(1);
 console.log(myLinkedList.printList());
+// myLinkedList.printList();
 
 // console.log(myLinkedList);
 // console.log(myLinkedList.prepend(2));
-console.log(myLinkedList.insert(1, 101));
+// console.log(myLinkedList.insert(1, 101));
