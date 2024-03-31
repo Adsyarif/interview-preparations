@@ -102,6 +102,7 @@ class LinkedList {
     }
 
     let first = this.head;
+    this.tail = this.head;
     let second = first.next;
     while (second) {
       const _ = second.next;
@@ -109,6 +110,9 @@ class LinkedList {
       first = second;
       second = _;
     }
+    this.head.next = null;
+    this.head = first;
+    return this.printList();
   }
 }
 
