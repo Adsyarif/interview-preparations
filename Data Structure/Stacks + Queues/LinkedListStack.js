@@ -24,12 +24,28 @@ class Stack {
     } else {
       const holdingPointer = this.top;
       this.top = newNode;
+      this.top.next = holdingPointer;
     }
+    this.length++;
+    return this;
   }
 
-  pop() {}
+  pop() {
+    if (!this.top) {
+      return null;
+    }
+    // const holdingPointer = this.top;
+    this.top = this.top.next;
+    this.length--;
+    return this;
+  }
 
   //isEmpty
 }
 
 const myStack = new Stack();
+myStack.push("Google");
+myStack.push("Yahoo");
+myStack.push("Flask");
+myStack.peek();
+myStack.pop();
